@@ -1,12 +1,5 @@
 function ordena(ordem, entrada) {
-  if (
-    entrada &&
-    entrada instanceof Array &&
-    entrada.length > 0 &&
-    ordem &&
-    ordem instanceof Array &&
-    ordem.length > 0
-  ) {
+  if (isValid(ordem) && isValid(entrada)) {
     const mapa = entrada.reduce((mapa, e) => {
       let outros = mapa.get(e.id) || [];
       outros.push(e);
@@ -19,5 +12,9 @@ function ordena(ordem, entrada) {
       []
     );
   } else return [];
+}
+
+function isValid(array) {
+  return array && array instanceof Array && array.length > 0;
 }
 module.exports = { ordena };
